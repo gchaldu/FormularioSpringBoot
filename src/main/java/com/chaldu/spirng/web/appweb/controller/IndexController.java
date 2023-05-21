@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,7 +24,7 @@ public class IndexController {
     //public String index(Model model)
     public String index(ModelMap model)
     {
-        model.addAttribute("titulo", "Spring Boot con ModelMap");
+        model.addAttribute("titulo", "Facundo!!!!");
         return "index";
     }
     @RequestMapping(value = "/perfil")
@@ -41,14 +42,19 @@ public class IndexController {
     @GetMapping(value = {"/listar"})
     public String listar(ModelMap model)
     {
+        model.addAttribute("titulo", "Listado de usuarios");
+        return "listar";
+    }
+
+    @ModelAttribute("usuarios")
+    public List<Usuario> listUsuarios()
+    {
         List<Usuario> list = new ArrayList<>();
         list.add(new Usuario("Caro", "Archu", "caro@gmail.com"));
         list.add(new Usuario("Caro2", "Archu2", "caro2@gmail.com"));
         list.add(new Usuario("Caro3", "Archu3", "caro3@gmail.com"));
         list.add(new Usuario("Caro4", "Archu4", "caro4@gmail.com"));
-        model.addAttribute("titulo", "Listado de usuarios");
-        model.addAttribute("usuarios", list);
-        return "listar";
+        return list;
     }
     
 }
