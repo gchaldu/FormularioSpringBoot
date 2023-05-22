@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar parametros de la Ruta @PathVariable<</title>
+</head>
+<body>
+    <h1>Enviar parametros de la Ruta @PathVariable</h1>
+    <ul>
+        <li><a th:href="@{/variables/string/} + 'Hola que tal' ">@{/variables/string/} + 'Hola que tal'</a></li>
+        <li><a th:href="@{/variables/string/} + 'Hola tengo numero ' + '/' + 25 ">@{/variables/string/} + 'Hola tengo numero ' + /25</a></li>
+        <li><a th:href="@{/variables/string/} + ${textoEnviar} + '/' + ${numeroEnviar} ">@{/variables/string/} + ${textoEnviar}  + /${numeroEnviar} </a></li>
+    </ul>
+</body>
+</html>
