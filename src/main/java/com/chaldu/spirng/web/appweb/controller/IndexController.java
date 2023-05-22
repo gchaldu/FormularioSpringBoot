@@ -3,6 +3,7 @@ package com.chaldu.spirng.web.appweb.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,13 +19,20 @@ import com.chaldu.spirng.web.appweb.models.Usuario;
 @RequestMapping("/app")
 public class IndexController {
 
+    @Value("${texto.indexcontroller.index.titulo}")
+    private String textoIndex;
+    @Value("${texto.indexcontroller.index.perfil}")
+    private String textoPerfil;
+    @Value("${texto.indexcontroller.index.listado}")
+    private String textoLista;
+
     /*RETORNA EL NOMBRE DE LA LISTA */
     //@RequestMapping(value = "/index", method = RequestMethod.GET)
     @GetMapping(value = {"/index", "/"})
     //public String index(Model model)
     public String index(ModelMap model)
     {
-        model.addAttribute("titulo", "Facundo!!!!");
+        model.addAttribute("titulo", textoIndex);
         return "index";
     }
     @RequestMapping(value = "/perfil")
@@ -35,14 +43,14 @@ public class IndexController {
         usuario.setNombre("Gabriel");
         usuario.setEmail("gabriel@gmail.com");
         model.addAttribute("usuario", usuario);
-        model.addAttribute("titulo", "Perfil del Usuario");
+        model.addAttribute("titulo", textoPerfil);
         return "perfil";
     }
 
     @GetMapping(value = {"/listar"})
     public String listar(ModelMap model)
     {
-        model.addAttribute("titulo", "Listado de usuarios");
+        model.addAttribute("titulo", textoLista);
         return "listar";
     }
 
